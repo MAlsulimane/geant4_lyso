@@ -1,0 +1,30 @@
+
+
+#source /batchsoft/geant4/geant495-x86_64-slc5-412/bin/geant4.sh
+#source /batchsoft/geant4/geant495-x86_64-slc5-412/share/Geant4-9.5.0/geant4make/geant4make.sh
+
+#source /batchsoft/geant4/geant496-x86_64-slc6-46/bin/geant4.sh
+#source /batchsoft/geant4/geant496-x86_64-slc6-46/share/Geant4-9.6.1/geant4make/geant4make.sh
+
+#source /batchsoft/geant4/geant4.10.02.p02-x86_64-slc6-48/bin/geant4.sh
+#source /batchsoft/geant4/geant4.10.02.p02-x86_64-slc6-48/share/Geant4-10.2.2/geant4make/geant4make.sh
+
+#source /batchsoft/geant4/geant4.10.02.p02-x86_64-slc6-49/bin/geant4.sh
+#source /batchsoft/geant4/geant4.10.02.p02-x86_64-slc6-49/share/Geant4-10.2.2/geant4make/geant4make.sh
+
+
+source /batchsoft/geant4/geant4.10.03-x86_64-cc7-48/bin/geant4.sh
+source /batchsoft/geant4/geant4.10.03-x86_64-cc7-48/share/Geant4-10.3.0/geant4make/geant4make.sh
+
+export G4ABLADATA=/batchsoft/geant4/data/G4ABLA3.0
+export G4LEDATA=/batchsoft/geant4/data/G4EMLOW6.48
+export G4LEVELGAMMADATA=/batchsoft/geant4/data/PhotonEvaporation3.2
+export G4NEUTRONHPDATA=/batchsoft/geant4/data/G4NDL4.5
+export G4RADIOACTIVEDATA=/batchsoft/geant4/data/RadioactiveDecay4.2
+
+export G4NEUTRONXSDATA=/batchsoft/geant4/data/G4NEUTRONXS1.4
+export G4PIIDATA=/batchsoft/geant4/data/G4PII1.3
+export G4REALSURFACEDATA=/batchsoft/geant4/data/RealSurface1.0
+
+# This ensures when this script is run by the cluster, all output files go to hepstore
+#cd /hepstore/cbarajas

@@ -1,0 +1,30 @@
+## This macro performs the initialization of G4GeneralParticleSource
+## for the proton beam at the PPI (IBA) accelerator. Parameters are made up!
+
+
+
+## Particle and beam properties
+
+/gps/particle                                        gamma
+/gps/ang/type iso
+/gps/pos/type                                        Point
+#/gps/pos/shape                                       Circle
+/gps/pos/centre                                      0.0 0.0 -5.0 mm
+#/gps/pos/radius                                      1.0 mm
+/gps/direction                                       0 0 1
+
+
+## Gauss energy distribution (sigma taken from Catania beamline as not known for CCO)
+
+/gps/energy                                          4.4 MeV #0.025 eV
+#/gps/ene/type                                        Gauss
+#/gps/ene/sigma                                       0.3 MeV # based on clatterbridge energy spread #2.3 MeV
+
+
+## Gauss distribution in angle
+
+#/gps/ang/type iso
+#/gps/ang/sigma_x 1.6 mrad
+#/gps/ang/sigma_y 1.6 mrad
+#/gps/ang/rot1 -1. 0. 0
+

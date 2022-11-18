@@ -1,0 +1,42 @@
+## This macro controls how the visualisation of the setup is done
+## can use OpenGL or Qt etc.
+
+#/vis/open HepRepXML            #needs setting up
+/vis/open OGLIQt 800x500-0+0   #works quickly
+#/vis/open OGLIX 800x500-0+0     #works very slowly!
+/vis/drawVolume
+
+
+## Draw wireframe around geometry
+
+/vis/viewer/set/lineSegmentsPerCircle 12                        # minimum of 12
+/vis/viewer/set/auxiliaryEdge true
+
+
+## Draw geometry as solids
+
+#/vis/viewer/set/style surface
+
+
+## Select viewing angle using theta/phi values
+
+#/vis/viewer/set/viewpointThetaPhi 30 140 deg					# Good forwards shot
+#/vis/viewer/set/viewpointThetaPhi 50 150 deg					# Good forward/side shot
+#/vis/viewer/set/viewpointThetaPhi 120 40 deg					# Good backwards shot
+/vis/viewer/set/viewpointThetaPhi 90 180 deg					# 2D side view
+
+
+## Set zoom, and minimise drawing of tracks etc
+
+/vis/viewer/zoom 1.0
+/vis/scene/add/trajectories
+# (if too many tracks cause core dump => /tracking/storeTrajectory 0)
+# for drawing the hits, uncomment next line
+# /vis/scene/add/hits
+# (if you prefer refreshing each event, comment out next line)
+/vis/scene/endOfEventAction accumulate
+
+
+## To axis to visualisation 
+
+#/vis/scene/add/axes       0 0 0 250 mm

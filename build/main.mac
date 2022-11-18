@@ -1,0 +1,58 @@
+## This macro controls which macros are called for beam characteristics,
+## visualisation and geometry options.
+
+
+## Setup GPS for beam characteristics including size, shape, origin
+## and direction as well as mean and width for energy and angular
+## distributions.
+
+## Set paths to macros (used by batch mode on linux desktop when submitting jobs to cluster)
+/control/macroPath /user/malsulimane/Desktop/Geant4_LYSO/build/macros
+
+
+## 8.5cm diameter beams
+
+#/control/execute    gps_iThemba_191MeV_8.5cm_beam.mac
+#/control/execute    gps_iThemba_125MeV_8.5cm_beam.mac
+#/control/execute    gps_iThemba_60MeV_8.5cm_beam.mac   ## change compensator & phantom mat to air
+
+
+## 10cm diameter beams
+
+#/control/execute    gps_iThemba_191MeV.mac
+#/control/execute    gps_iThemba_125MeV.mac
+#/control/execute    gps_iThemba_60MeV.mac       ## change compensator mat to air
+
+## Other beams
+
+#/control/execute    gps_bham.mac               ## change compensator mat to air
+#/control/execute    gps_CCO.mac                ## change compensator mat to air
+#/control/execute    gps_Sr90.mac               ## change compensator & phantom mat to air
+#/control/execute    gps_irradiation_dose.mac   ## use for producing files in dose_calculations/ dir
+
+/control/execute    gps_PPI_AmBe.mac
+#/control/execute    gps_PPI_Gamma.mac
+#/control/execute    gps_PPI_ThermalNeutron.mac
+
+## Turn visualisation on/off
+
+/control/execute    setup_vis.mac
+
+
+## Setup geometry of tracker and detectors
+
+/control/execute     tracker_geom.mac
+
+#/tracking/verbose 4
+#/geometry/test recursive_test
+#/geometry/test/run
+#/geometry/test/recursive_test
+
+## Set no. of events in run
+
+/run/beamOn          1000
+
+
+## Visualise hits for longer (if screenshot is needed, vis must be turned on above)
+
+#/vis/scene/add/hits

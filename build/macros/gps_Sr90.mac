@@ -1,0 +1,29 @@
+## This macro performs the initialization of G4GeneralParticleSource
+## for the Sr90 sources used in the lab. It emits relativistic e-
+## with an energy of 2.28 MeV
+
+
+
+## Particle and beam properties
+
+/gps/particle                                        e-
+/gps/pos/type                                        Beam
+/gps/pos/shape                                       Circle
+/gps/pos/centre                                      0.0 0.0 -300.0 mm
+/gps/pos/radius                                      1.0 mm                 # 2mm hole in brass collimator
+/gps/direction                                       0 0 1
+
+
+## Electrons emitted are MIPs (relativistic), consider energy as monoenergetic
+## as it is from nuclear decay
+
+/gps/energy                                          2.28 MeV
+/gps/ene/type                                        Mono
+
+
+## Use no angular distribution for now as not known and will be small
+
+/gps/ang/type beam2d
+#/gps/ang/sigma_x 1.6 mrad
+#/gps/ang/sigma_y 1.6 mrad
+/gps/ang/rot1 -1. 0. 0

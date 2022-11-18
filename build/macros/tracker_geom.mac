@@ -1,0 +1,137 @@
+
+#######################################################################
+## This macro contols the geometry of the silicon tracking detectors ##
+## as well as the geometry of the overall tracker with phantom,      ##
+## compensator and calorimeter and their materials. Detector         ##
+## parameters for charge diffusion and noise are also included here  ##
+#######################################################################
+
+
+#################################
+## Det parameters and geometry ##
+#################################
+
+/det/n_strips               1024
+/det/strip_pitch            0.0908 mm
+/det/strip_length           96.0 mm
+/det/thickness              0.15 mm
+
+#/det/n_strips               128           #ALiBaVa
+#/det/strip_pitch            0.08 mm       #ALiBaVa
+#/det/strip_length           10.0 mm       #ALiBaVa
+
+
+########################################
+## Noise and charge sharing variables ##
+########################################
+
+#/det/digi/pedestal  0     # pedestal value (N/A for binary chip), set to 0 to turn off
+#/det/digi/noise     1000     # noise sigma applied to each strip, set to 0 to turn off
+#/det/digi/bias      50     # Bias voltage for charge diffusion, set to 0 to turn off
+
+## Crosstalk turned off as has little effect in measured
+## data and simulation requires CLHEP object incompatible
+## with GEANT4 10.
+
+#/det/digi/crosstalk 0.05
+
+
+################################################
+## Materials for world and tracker components ##
+################################################
+
+#/mat/world_material             G4_AIR
+#/mat/compensator_material       G4_AIR #G4_PLEXIGLASS
+#/mat/phantom_material           G4_WATER #G4_PLEXIGLASS
+#/mat/detector_material          G4_Si
+#/mat/calorimetor_material       G4_PLEXIGLASS
+
+
+#######################################################
+## Set Phantom rotation angle (around beam axis)     ##
+## phantom zShift provided in case phantom is not    ##
+## at isocentre. all geometry is positioned relative ##
+## to this. phantom theta no longer needed.          ##
+#######################################################
+
+/phantom/theta                 0 deg
+/phantom/zShift                0.0 mm
+
+
+#########################################################
+## Tracker Geometry is positioned along z (beam axis)  ##
+## with the following parameters                       ##
+#########################################################
+
+/geom/halfPhantomSizeZ      200 mm
+#/geom/halfCalorimeterSizeZ  125.0 mm
+/geom/plane_dist            12.0 mm
+/geom/module_dist           41.0 mm
+/geom/phantom_gap           110.0 mm
+#/geom/calorimeter_gap       41.0 mm
+
+
+
+/geom/pix_tracker_z_pos     303. mm 
+
+
+##################################################
+## Tracker detector setup: rotate planes,       ##
+## Make DUT so that each plane contains strips, ##
+## Offset in angle can be added to simulate     ##
+## the probable mechanical misalignment of the  ##
+## detectors and the same in x and y as well.   ##
+## z shift not set in the same way since this   ##
+## is controlled by mechanics and should be     ##
+## equal for all planes so can be set with      ##
+## the above parameters, also small differences ##
+## in z will make no difference to tracking     ##
+##################################################
+
+/det/strip_build    false
+/det/pixel_build    true
+
+/det/x1_Sensor/DUTsetup         true
+/det/x1_Sensor/x_pos            0.0 mm
+/det/x1_Sensor/y_pos            0.0 mm
+/det/x1_Sensor/stereo_angle     0.0 deg
+/det/x1_Sensor/xShift           0.0 mm
+/det/x1_Sensor/yShift           0.0 mm
+/det/x1_Sensor/stereoShift      0.0 deg
+#/det/x1_Sensor/stereoShift      -0.1194 deg
+
+/det/u1_Sensor/DUTsetup         true
+/det/u1_Sensor/x_pos            0.0 mm
+/det/u1_Sensor/y_pos            0.0 mm
+/det/u1_Sensor/stereo_angle     60.0 deg
+/det/u1_Sensor/xShift           0.0 mm
+/det/u1_Sensor/yShift           0.0 mm
+/det/u1_Sensor/stereoShift      0.0 deg
+#/det/u1_Sensor/stereoShift      0.1194 deg
+
+/det/v1_Sensor/DUTsetup         true
+/det/v1_Sensor/x_pos            0.0 mm
+/det/v1_Sensor/y_pos            0.0 mm
+/det/v1_Sensor/stereo_angle     -60.0 deg
+/det/v1_Sensor/xShift           0.0 mm
+/det/v1_Sensor/yShift           0.0 mm
+/det/v1_Sensor/stereoShift      0.0 deg
+#/det/v1_Sensor/stereoShift      -0.1194 deg
+
+
+#################################################
+##############    Pixel tracker    ##############
+#################################################
+
+/det/pix1_Sensor/DUTsetup         true
+/det/pix2_Sensor/DUTsetup         true
+/det/pix3_Sensor/DUTsetup         true
+/det/pix4_Sensor/DUTsetup         true
+
+#################################################
+## Update command forces detector construction ##
+## to recompute geometry                       ##
+#################################################
+
+/det/update
+
