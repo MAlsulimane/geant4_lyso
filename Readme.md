@@ -1,3 +1,5 @@
+# Geant4 LYSO
+
 This folder is represents the Geant4 simulation of neutron detector system which include two shielding (Lead and PE) materials, thermal neutron converter layer made of (6Li, 6LiF, 6Li2CO3, 6LiH) and Sensitive detector (LYSO or Si).
 
 Quick instructions:
